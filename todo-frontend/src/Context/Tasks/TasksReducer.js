@@ -1,4 +1,3 @@
-import React from 'react'
 import { GET_TASKS } from '../Types';
 
 const TasksReducer = (state,action) => {

@@ -1,4 +1,4 @@
-import React, { useReducer } from '.react';
+import React, { useReducer } from 'react';
 import axios from 'axios';
 import TasksContext from './TasksContext';
 import TasksReducer from './TasksReducer';
