@@ -38,16 +38,28 @@
     color:var(--white);
 
 }
-.inputs #status{
+.inputs #completed{
     background-color:var(--pink-purple);
     border: 1px solid transparent;
     border-radius:var(--border-radius);
     transition: all 0.25s;
 }
-.inputs #status:hover{
+.inputs #completed:hover{
     background-color:transparent;
     border:1px solid var(--grey-delete);
     color:var(--grey-delete);
+}
+.inputs #incomplete{
+    background-color:transparent;
+    border: 1px solid transparent;
+    color:var(--grey-delete);
+    border-radius:var(--border-radius);
+    transition: all 0.25s;
+}
+.inputs #incomplete:hover{
+    background-color:transparent;
+    border:1px solid var(--pink-purple);
+    color:var(--white);
 }
 .inputs #delete{
     background-color:transparent;

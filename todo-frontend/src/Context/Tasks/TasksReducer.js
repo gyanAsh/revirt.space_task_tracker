@@ -1,6 +1,7 @@
 import {
   GET_TASKS,
-  ADD_NEW_TASK
+  ADD_NEW_TASK,
+  UPDATE_STATUS
 } from '../Types';
 
 const TasksReducer = (state,action) => {
@@ -14,6 +15,15 @@ const TasksReducer = (state,action) => {
       return {
         ...state,
         tasks:[action.payload,...state.tasks]
+      }
+    case UPDATE_STATUS:
+      return {
+        ...state,
+        tasks: state.tasks.map(task => {
+            if (task.id === action.payload.id)
+            return action.payload;
+          return task
+        })
       }
     default:
         return state;

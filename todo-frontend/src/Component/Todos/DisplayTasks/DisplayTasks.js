@@ -19,8 +19,7 @@ const DisplayTasks = () => {
               { tasks !== null && tasks.map(task => (
                   <li key={task.id}>
                       <TodoCard
-                          title={task.title}
-                          completed={task.completed}
+                          task={task}
                       />
                   </li>
                ))}

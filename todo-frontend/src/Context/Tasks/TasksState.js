@@ -5,7 +5,8 @@ import TasksContext from './TasksContext';
 import TasksReducer from './TasksReducer';
 import {
     GET_TASKS,
-    ADD_NEW_TASK
+    ADD_NEW_TASK,
+    UPDATE_STATUS
 } from '../Types';
 
 const TasksState = ({ children }) => {
@@ -14,6 +15,7 @@ const TasksState = ({ children }) => {
     }
     const [state, dispatch] = useReducer(TasksReducer, initalState);
 
+    // Get all ToDos
     const getTasks = async () => {
         try {
             const res = await axios.get('https://jsonplaceholder.typicode.com/todos');
@@ -24,36 +26,49 @@ const TasksState = ({ children }) => {
         
     }
 
+    // Adding a new ToDo
     const addNewTask = async(task) => {
         const config = {
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
             }
         }
-        const taskObj = {
+        const todoObj = {
             title: task,
             userId: 1,
             completed:false
         }
         try {
-            const res = await axios.post("https://jsonplaceholder.typicode.com/todos", taskObj, config)
+            const res = await axios.post("https://jsonplaceholder.typicode.com/todos", todoObj, config)
 
             // To give tasks unique id
             // While working with real database this step can be skipped
             res.data.id = v4();
 
-            console.log(res);
             dispatch({ type: ADD_NEW_TASK, payload: res.data });
         } catch (error) {
             console.log(error);
         }
     }
 
+    // Update "incomplete to complete" or vice versa
+    const updateTasksStatus = async(todoObj) => {
+        const config = {
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            }
+        }
+
+        const res = await axios.put(`https://jsonplaceholder.typicode.com/todos/${todoObj.id}`,todoObj,config);
+        dispatch({ type: UPDATE_STATUS, payload: res.data });
+    }
+
     return (<TasksContext.Provider
         value={{
             tasks: state.tasks,
             getTasks,
-            addNewTask
+            addNewTask,
+            updateTasksStatus
         }}
     >
         {children}
