@@ -1,5 +1,6 @@
 import React, { useReducer } from 'react';
 import axios from 'axios';
+import {v4} from 'uuid'
 import TasksContext from './TasksContext';
 import TasksReducer from './TasksReducer';
 import {
@@ -36,6 +37,11 @@ const TasksState = ({ children }) => {
         }
         try {
             const res = await axios.post("https://jsonplaceholder.typicode.com/todos", taskObj, config)
+
+            // To give tasks unique id
+            // While working with real database this step can be skipped
+            res.data.id = v4();
+
             console.log(res);
             dispatch({ type: ADD_NEW_TASK, payload: res.data });
         } catch (error) {
