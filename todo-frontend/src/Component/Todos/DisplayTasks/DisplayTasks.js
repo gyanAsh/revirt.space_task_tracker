@@ -21,11 +21,7 @@ const DisplayTasks = () => {
                       />
                   </li>
                ))}
-              
-              {/* <li> <TodoCard/></li>
-              <li> <TodoCard/></li>
-              <li> <TodoCard/></li>
-              <li> <TodoCard/></li> */}
+
           </ol>  
     </div>
   )

@@ -7,7 +7,7 @@ const TodoCard = ({title,completed}) => {
           <h3> {title}</h3>
           <span></span>
           <div className={styles.inputs}>
-              <button id={styles.status}>Mark as { completed ? "C" : "soop"}</button>
+              <button id={styles.status}>Mark as { completed ? "incomplete" : "completed"}</button>
               <button id={styles.delete}>Delete</button>
           </div>
     </div>

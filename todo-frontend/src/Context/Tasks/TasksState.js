@@ -13,7 +13,7 @@ const TasksState = ({ children }) => {
     const getTasks = async () => {
         try {
             const res = await axios.get('https://jsonplaceholder.typicode.com/todos');
-            dispatch({type:GET_TASKS,payload: res.data})
+            dispatch({type:GET_TASKS,payload: res.data.slice(0,50)})
         } catch (error) {
             console.log(error);
         }
