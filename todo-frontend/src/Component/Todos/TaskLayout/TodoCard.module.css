@@ -1,0 +1,51 @@
+.taskContainer{
+    width:360px;  
+    /* keep width auto */
+
+    height:auto;
+
+    padding:var(--fz-xs) 0;
+    display: flex;
+    flex-direction: column;
+
+    background-color:var(--grey-tiles);
+    border-radius: var(--border-radius);
+    font-family: var(--font-roboto);
+    
+
+}
+
+.taskContainer h3{
+    padding: 0 var(--fz-xs);
+    font-size: var(--fz-lg);
+    font-weight: 300;
+}
+
+.taskContainer span{
+    margin: 10px 0;
+    height:1px;
+    background-color:var(--grey-dl);
+}
+
+.inputs{
+    padding:0 var(--fz-xs);
+    display: flex;
+    justify-content:space-between;
+}
+
+.inputs button{
+    padding:5px 20px;
+    font-size:var(--fz-md);
+    color:var(--white);
+
+}
+.inputs #status{
+    background-color:var(--pink-purple);
+    border: none;
+    border-radius:var(--border-radius);
+}
+.inputs #delete{
+    background-color:transparent;
+    border: none;
+    border-radius:var(--border-radius);
+}

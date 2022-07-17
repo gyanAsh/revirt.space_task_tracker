@@ -21,7 +21,7 @@
 /* Input Box */
 
 .inputTaskContainer input{
-    width:min(25rem,70vw);
+    width:min(35rem,70vw);
     height:var(--fz-space);
 
     border:0;
