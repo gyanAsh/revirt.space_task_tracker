@@ -22,16 +22,24 @@
   --fz-lg: 18px;
   --fz-xl: 20px;
   --fz-xxl: 22px;
-  --fz-heading: 32px;
+  --fz-space: 32px;
   --border-radius: 4px;
   --nav-height: 100px;
   --nav-scroll-height: 70px;
+
   --tab-height: 42px;
   --tab-width: 120px;
+
+  --button-w:128px;
+  --button-h:32px;
 }
 
 .App{
   background-color: var(--grey-bg);
   color: var(--white);
+
+  display:flex;
+  flex-direction: column;
+  gap:1rem;
 }
 
