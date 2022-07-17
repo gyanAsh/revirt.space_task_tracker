@@ -40,11 +40,23 @@
 }
 .inputs #status{
     background-color:var(--pink-purple);
-    border: none;
+    border: 1px solid transparent;
     border-radius:var(--border-radius);
+    transition: all 0.25s;
+}
+.inputs #status:hover{
+    background-color:transparent;
+    border:1px solid var(--grey-delete);
+    color:var(--grey-delete);
 }
 .inputs #delete{
     background-color:transparent;
-    border: none;
+    border: 1px solid transparent;
     border-radius:var(--border-radius);
+    transition: all 0.4s;
+}
+
+.inputs #delete:hover{
+    border:1px solid var(--pink-purple);
+    color:var(--pink-purple);
 }
