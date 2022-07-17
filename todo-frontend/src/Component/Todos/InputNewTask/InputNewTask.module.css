@@ -3,7 +3,7 @@
     flex-direction: column;
     gap:var(--fz-md);
 
-    padding:var(--fz-space);
+    padding:var(--fz-space) var(--nav-height);
     align-items: flex-start;
 }
 
@@ -21,7 +21,7 @@
 /* Input Box */
 
 .inputTaskContainer input{
-    width:min(35rem,70vw);
+    width:clamp(44vw,80vw,35rem);
     height:var(--fz-space);
 
     border:0;
@@ -59,7 +59,10 @@
 
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 745px) {
+    .inputTaskContainer{
+        padding:var(--fz-space) ;
+    }
     .inputTaskContainer form{ 
         display:flex;
         flex-direction: column;

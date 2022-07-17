@@ -1,0 +1,23 @@
+.displayTasksContainer{
+    display:grid;
+    gap:var(--fz-md);
+
+    padding:var(--fz-space) var(--nav-height);
+}
+.displayTasksContainer h3{
+    font-family: var(--font-roboto);
+    font-size:var(--fz-lg);
+    font-weight: 400;
+}
+
+.displayList{
+    display:grid;
+    gap:3rem;
+    grid-template-columns: repeat(auto-fit, minmax(325px,1fr));
+}
+
+@media only screen and (max-width: 745px) {
+    .displayTasksContainer{
+        padding:var(--fz-space) ;
+    }
+  }

@@ -1,10 +1,9 @@
 .taskContainer{
-    width:360px;  
+    /* width:360px;   */
     /* keep width auto */
 
-    height:auto;
+    /* height:auto; */
 
-    padding:var(--fz-xs) 0;
     display: flex;
     flex-direction: column;
 
@@ -16,7 +15,7 @@
 }
 
 .taskContainer h3{
-    padding: 0 var(--fz-xs);
+    padding:var(--fz-xl);
     font-size: var(--fz-lg);
     font-weight: 300;
 }
@@ -28,7 +27,7 @@
 }
 
 .inputs{
-    padding:0 var(--fz-xs);
+    padding:var(--fz-xl);
     display: flex;
     justify-content:space-between;
 }

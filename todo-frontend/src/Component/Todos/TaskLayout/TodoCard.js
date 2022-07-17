@@ -5,7 +5,7 @@ const TodoCard = () => {
     const [status, setStatus] = useState("Completed");
   return (
     <div className={styles.taskContainer}>
-          <h3> Task asdfasdfasdfasdfasdfasdfasddfasdf asdfasdf</h3>
+          <h3> Task asdfasdfas dfasasd fasdfasdffff fffffffff ffffdfasdfas dfasddfasdf asdfasdf</h3>
           <span></span>
           <div className={styles.inputs}>
               <button id={styles.status}>Mark as {status}</button>
