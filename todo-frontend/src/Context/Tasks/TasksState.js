@@ -2,7 +2,10 @@ import React, { useReducer } from 'react';
 import axios from 'axios';
 import TasksContext from './TasksContext';
 import TasksReducer from './TasksReducer';
-import { GET_TASKS } from '../Types';
+import {
+    GET_TASKS,
+    ADD_NEW_TASK
+} from '../Types';
 
 const TasksState = ({ children }) => {
     const initalState = {
@@ -20,10 +23,31 @@ const TasksState = ({ children }) => {
         
     }
 
+    const addNewTask = async(task) => {
+        const config = {
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            }
+        }
+        const taskObj = {
+            title: task,
+            userId: 1,
+            completed:false
+        }
+        try {
+            const res = await axios.post("https://jsonplaceholder.typicode.com/todos", taskObj, config)
+            console.log(res);
+            dispatch({ type: ADD_NEW_TASK, payload: res.data });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (<TasksContext.Provider
         value={{
             tasks: state.tasks,
             getTasks,
+            addNewTask
         }}
     >
         {children}

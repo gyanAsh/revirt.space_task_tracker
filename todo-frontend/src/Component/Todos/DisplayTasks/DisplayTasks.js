@@ -6,9 +6,12 @@ import TasksContext from '../../../Context/Tasks/TasksContext';
 const DisplayTasks = () => {
     const tasksContext = useContext(TasksContext)
     const { tasks, getTasks } = tasksContext;
+
     useEffect(() => {
         getTasks();
-})
+        // eslint-disable-next-line
+    },[])
+    
   return (
     <div className={styles.displayTasksContainer}>
         <h3>Added task to-do list</h3>

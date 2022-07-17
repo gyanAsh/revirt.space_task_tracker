@@ -1,4 +1,7 @@
-import { GET_TASKS } from '../Types';
+import {
+  GET_TASKS,
+  ADD_NEW_TASK
+} from '../Types';
 
 const TasksReducer = (state,action) => {
   switch (action.type) {
@@ -6,7 +9,12 @@ const TasksReducer = (state,action) => {
         return {
             ...state,
             tasks: action.payload
-        };
+      };
+    case ADD_NEW_TASK:
+      return {
+        ...state,
+        tasks:[action.payload,...state.tasks]
+      }
     default:
         return state;
   }
