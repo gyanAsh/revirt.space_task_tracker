@@ -73,9 +73,9 @@ const TasksState = ({ children }) => {
             const res = await axios.patch(`https://jsonplaceholder.typicode.com/todos/${todoObj.id}`, todoObj, config);
             dispatch({ type: UPDATE_STATUS, payload: res.data });
 
-            if (state.filtered !== null && res.data.completed === false) {
+            if (state.filtered !== null && state.filterType === FILTER_COMPLETED) {
                 filterCompleted();
-            } else {
+            } else if(state.filtered !== null && state.filterType === FILTER_INCOMPLETE) {
                 filterIncomplete();
             }
 
@@ -93,7 +93,7 @@ const TasksState = ({ children }) => {
 
             if (state.filtered !== null && state.filterType === FILTER_COMPLETED) {
                 filterCompleted();
-            } else {
+            } else if(state.filtered !== null && state.filterType === FILTER_INCOMPLETE) {
                 filterIncomplete();
             }
 
