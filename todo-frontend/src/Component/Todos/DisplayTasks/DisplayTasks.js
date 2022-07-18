@@ -5,7 +5,7 @@ import TasksContext from '../../../Context/Tasks/TasksContext';
 
 const DisplayTasks = () => {
     const tasksContext = useContext(TasksContext)
-    const { tasks, getTasks } = tasksContext;
+    const { tasks, getTasks, filtered } = tasksContext;
 
     useEffect(() => {
         getTasks();
@@ -16,7 +16,13 @@ const DisplayTasks = () => {
     <div className={styles.displayTasksContainer}>
         <h3>Added task to-do list</h3>
           <ol className={styles.displayList}>
-              { tasks !== null && tasks.map(task => (
+        {filtered !== null ? filtered.map(task => (
+                <li key={task.id}>
+                <TodoCard
+                    task={task}
+                />
+                </li>
+              )) : tasks !== null && tasks.map(task => (
                   <li key={task.id}>
                       <TodoCard
                           task={task}

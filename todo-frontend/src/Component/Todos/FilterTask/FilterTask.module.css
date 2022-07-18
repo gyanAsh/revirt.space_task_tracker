@@ -1,0 +1,57 @@
+.filterContainer{
+    display:flex;
+    flex-direction: column;
+    gap:var(--fz-md);
+
+    padding:var(--fz-space) var(--nav-height);
+    align-items: flex-start;
+}
+
+.filterContainer h3{ 
+    font-family: var(--font-roboto);
+    font-size:var(--fz-lg);
+    font-weight: 400;
+}
+
+.filterContainer button{
+    width:var(--button-w);
+    height:var(--button-h);
+
+    
+    font-family: var(--font-roboto);
+    font-size: var(--fz-md);
+    font-weight: 300;
+
+    
+    border: none;
+    border-radius: var(--border-radius);
+
+    transition: all 0.1s;
+
+}
+
+.filterContainer button:hover{
+    outline:2px solid var(--pink-purple);
+}
+
+.filterButtons{
+    display:flex;
+    gap: 2vw;
+}
+.filterButtons .activeBtn{
+    background-color: var(--pink-purple);
+    color: var(--white);
+}
+.filterButtons .activeBtn:hover{
+    outline:2px solid var(--white);
+}
+
+@media only screen and (max-width: 745px) {
+    .filterContainer{
+        padding:var(--fz-space) ;
+    }
+    .filterContainer button{ 
+        width:calc(var(--button-w)/1.5);
+        font-size: calc(var(--fz-md)/1.1);
+    }
+  }

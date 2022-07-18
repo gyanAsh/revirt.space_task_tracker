@@ -7,12 +7,17 @@ import {
     GET_TASKS,
     ADD_NEW_TASK,
     UPDATE_STATUS,
-    DELETE_TASK
+    DELETE_TASK,
+    FILTER_COMPLETED,
+    FILTER_INCOMPLETE,
+    CLEAR_FILTER
 } from '../Types';
 
 const TasksState = ({ children }) => {
     const initalState = {
         tasks: null,
+        filtered: null,
+        filterType:null
     }
     const [state, dispatch] = useReducer(TasksReducer, initalState);
 
@@ -47,6 +52,11 @@ const TasksState = ({ children }) => {
             res.data.id = v4();
 
             dispatch({ type: ADD_NEW_TASK, payload: res.data });
+
+            if (state.filtered !== null) {
+                filterIncomplete();
+            }
+                
         } catch (error) {
             console.log(error);
         }
@@ -62,6 +72,13 @@ const TasksState = ({ children }) => {
         try {            
             const res = await axios.patch(`https://jsonplaceholder.typicode.com/todos/${todoObj.id}`, todoObj, config);
             dispatch({ type: UPDATE_STATUS, payload: res.data });
+
+            if (state.filtered !== null && res.data.completed === false) {
+                filterCompleted();
+            } else {
+                filterIncomplete();
+            }
+
         } catch (error) {
             console.log(error);
         }
@@ -73,18 +90,57 @@ const TasksState = ({ children }) => {
         try {
             await axios.delete(`https://jsonplaceholder.typicode.com/todos/${taskId}`);
             dispatch({ type: DELETE_TASK, payload: taskId });
+
+            if (state.filtered !== null && state.filterType === FILTER_COMPLETED) {
+                filterCompleted();
+            } else {
+                filterIncomplete();
+            }
+
         } catch (error) {
             console.log(error);
         }
     }
 
+    // Will display completed tasks
+    const filterCompleted = () => {
+        try {
+            dispatch({ type: FILTER_COMPLETED });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // Will display incomplete tasks
+    const filterIncomplete = () => {
+        try {
+            dispatch({ type: FILTER_INCOMPLETE });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const clearFilter = () => {
+        try {
+            dispatch({ type: CLEAR_FILTER });
+        } catch (error) {
+            console.log(error);
+        }
+        
+    }
+
     return (<TasksContext.Provider
         value={{
             tasks: state.tasks,
+            filtered: state.filtered,
+            filterType:state.filterType,
             getTasks,
             addNewTask,
             updateTasksStatus,
-            deleteTask
+            deleteTask,
+            filterCompleted,
+            filterIncomplete,
+            clearFilter
         }}
     >
         {children}

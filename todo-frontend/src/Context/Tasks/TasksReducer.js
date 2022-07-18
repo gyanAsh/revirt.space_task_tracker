@@ -2,7 +2,10 @@ import {
   GET_TASKS,
   ADD_NEW_TASK,
   UPDATE_STATUS,
-  DELETE_TASK
+  DELETE_TASK,
+  FILTER_COMPLETED,
+  FILTER_INCOMPLETE,
+  CLEAR_FILTER
 } from '../Types';
 
 const TasksReducer = (state,action) => {
@@ -15,7 +18,7 @@ const TasksReducer = (state,action) => {
     case ADD_NEW_TASK:
       return {
         ...state,
-        tasks:[action.payload,...state.tasks]
+        tasks: [action.payload, ...state.tasks]
       }
     case UPDATE_STATUS:
       return {
@@ -30,6 +33,24 @@ const TasksReducer = (state,action) => {
       return {
         ...state,
         tasks:state.tasks.filter(task=> task.id !== action.payload),
+      }
+    case FILTER_COMPLETED:
+      return {
+        ...state,
+        filtered:state.tasks.filter(task=> task.completed === true),
+        filterType: FILTER_COMPLETED
+      }
+    case FILTER_INCOMPLETE:
+      return {
+        ...state,
+        filtered: state.tasks.filter(task => task.completed === false),
+        filterType: FILTER_INCOMPLETE
+      }
+    case CLEAR_FILTER:
+      return {
+        ...state,
+        filtered: null,
+        filterType: null
       }
     default:
         return state;
