@@ -5,6 +5,7 @@
     background-color:var(--grey-tiles);
     border-radius: var(--border-radius);
     font-family: var(--font-roboto);
+    box-shadow: var(--drop-shadow-tile-incomplete) ;
 }
 
 .taskContainer h3{
