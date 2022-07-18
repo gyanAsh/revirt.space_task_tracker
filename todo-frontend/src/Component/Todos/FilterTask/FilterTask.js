@@ -26,7 +26,7 @@ const FilterTask = () => {
     
   return (
       <div className={styles.filterContainer}>
-          <h3>Display :</h3>
+          <h3>Filter By :</h3>
           <div className={styles.filterButtons}>
               <button onClick={displayAll} className={filterType === null ? styles.activeBtn:null}>All</button>
               <button onClick={displayCompletedTasks} className={filterType === FILTER_COMPLETED ? styles.activeBtn:null}>Completed</button>
