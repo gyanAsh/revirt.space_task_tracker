@@ -58,9 +58,6 @@ const TasksState = ({ children }) => {
                 'Content-type': 'application/json; charset=UTF-8',
             }
         }
-        // const patchData = {
-        //     completed:todoObj.completed
-        // }
         try {            
             const res = await axios.patch(`https://jsonplaceholder.typicode.com/todos/${todoObj.id}`,todoObj,config);
             dispatch({ type: UPDATE_STATUS, payload: res.data });
