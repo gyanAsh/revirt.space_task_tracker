@@ -3,10 +3,10 @@ import TasksContext from '../../../Context/Tasks/TasksContext';
 import styles from './TodoCard.module.css';
 
 const TodoCard = ({task}) => {
-    const { title, completed } = task;
+    const { title, completed,id } = task;
 
     const tasksContext = useContext(TasksContext);
-    const { updateTasksStatus } = tasksContext;
+    const { updateTasksStatus ,deleteTask } = tasksContext;
     
     const updateStatus = () => {
         const taskObj = {
@@ -14,6 +14,10 @@ const TodoCard = ({task}) => {
             completed: !completed
         }
         updateTasksStatus(taskObj);
+    }
+
+    const deleteCurrentTask = () => {
+        deleteTask(id);
     }
 
   return (
@@ -27,7 +31,7 @@ const TodoCard = ({task}) => {
               >
                   Mark as {completed ? "incomplete" : "completed"}
               </button>
-              <button id={styles.delete}>Delete</button>
+              <button id={styles.delete} onClick={deleteCurrentTask}>Delete</button>
           </div>
     </div>
   )

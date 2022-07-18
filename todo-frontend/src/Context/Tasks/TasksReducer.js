@@ -1,7 +1,8 @@
 import {
   GET_TASKS,
   ADD_NEW_TASK,
-  UPDATE_STATUS
+  UPDATE_STATUS,
+  DELETE_TASK
 } from '../Types';
 
 const TasksReducer = (state,action) => {
@@ -24,6 +25,11 @@ const TasksReducer = (state,action) => {
             return action.payload;
           return task
         })
+      }
+    case DELETE_TASK:
+      return {
+        ...state,
+        tasks:state.tasks.filter(task=> task.id !== action.payload),
       }
     default:
         return state;

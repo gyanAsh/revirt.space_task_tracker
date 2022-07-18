@@ -6,7 +6,8 @@ import TasksReducer from './TasksReducer';
 import {
     GET_TASKS,
     ADD_NEW_TASK,
-    UPDATE_STATUS
+    UPDATE_STATUS,
+    DELETE_TASK
 } from '../Types';
 
 const TasksState = ({ children }) => {
@@ -59,12 +60,22 @@ const TasksState = ({ children }) => {
             }
         }
         try {            
-            const res = await axios.patch(`https://jsonplaceholder.typicode.com/todos/${todoObj.id}`,todoObj,config);
+            const res = await axios.patch(`https://jsonplaceholder.typicode.com/todos/${todoObj.id}`, todoObj, config);
             dispatch({ type: UPDATE_STATUS, payload: res.data });
         } catch (error) {
             console.log(error);
         }
         
+    }
+    // Delete todo from the list
+    const deleteTask = async(taskId) => {
+        
+        try {
+            await axios.delete(`https://jsonplaceholder.typicode.com/todos/${taskId}`);
+            dispatch({ type: DELETE_TASK, payload: taskId });
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return (<TasksContext.Provider
@@ -72,7 +83,8 @@ const TasksState = ({ children }) => {
             tasks: state.tasks,
             getTasks,
             addNewTask,
-            updateTasksStatus
+            updateTasksStatus,
+            deleteTask
         }}
     >
         {children}
