@@ -1,6 +1,8 @@
-import React,{useContext} from 'react'
-import TasksContext from '../../../Context/Tasks/TasksContext';
+import React, { useContext } from 'react'
+import { CheckCircleFill} from 'react-bootstrap-icons';
 import styles from './TodoCard.module.css';
+import TasksContext from '../../../Context/Tasks/TasksContext';
+
 
 const TodoCard = ({task}) => {
     const { title, completed,id } = task;
@@ -21,7 +23,9 @@ const TodoCard = ({task}) => {
     }
 
   return (
-    <div className={styles.taskContainer}>
+      <div className={completed ? styles.taskCompletedContainer : styles.taskContainer}>
+          {/* <CheckCircleFill color="royalblue" size={46} /> */}
+          <CheckCircleFill className={styles.completedIcon} />
           <h3> {title}</h3>
           <span></span>
           <div className={styles.inputs}>

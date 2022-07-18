@@ -1,17 +1,10 @@
 .taskContainer{
-    /* width:360px;   */
-    /* keep width auto */
-
-    /* height:auto; */
-
     display: flex;
     flex-direction: column;
 
     background-color:var(--grey-tiles);
     border-radius: var(--border-radius);
     font-family: var(--font-roboto);
-    
-
 }
 
 .taskContainer h3{
@@ -24,6 +17,42 @@
     margin: 10px 0;
     height:1px;
     background-color:var(--grey-dl);
+}
+.taskContainer .completedIcon{
+    display:none;
+}
+
+.taskCompletedContainer{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    background-color:var(--grey-tiles);
+    border:1px solid var(--green);
+    border-radius: var(--border-radius);
+    font-family: var(--font-roboto);
+}
+
+.taskCompletedContainer h3{
+    padding:var(--fz-xl);
+    font-size: var(--fz-lg);
+    font-weight: 300;
+}
+
+.taskCompletedContainer span{
+    margin: 10px 0;
+    height:1px;
+    background-color:var(--grey-dl);
+}
+
+.taskCompletedContainer .completedIcon{
+    position:absolute;
+    color:var(--green);
+    background-color:var(--white);
+    border-radius: 50%;
+    top:var(--fz-xl);
+    right:calc(var(--fz-sm)*-1);
+    font-size: var(--fz-xxl);
 }
 
 .inputs{
@@ -46,7 +75,7 @@
 }
 .inputs #completed:hover{
     background-color:transparent;
-    border:1px solid var(--grey-delete);
+    border:1px solid var(--green);
     color:var(--grey-delete);
 }
 .inputs #incomplete{
