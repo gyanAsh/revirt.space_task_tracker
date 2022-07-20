@@ -8,9 +8,7 @@ app.use(express.json({ extended: true }));
 // Connect Database
 connectDB();
 
-app.use('/',(req, res)=> {
-    res.status(200).send("Server is working");
-})
+app.use('/api/v1/user',require('./routes/user'))
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT,()=> `Server started on Port: ${PORT}`);
