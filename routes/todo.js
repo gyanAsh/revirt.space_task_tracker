@@ -53,7 +53,7 @@ router.patch('/:id', authVerify, async (req, res) => {
         let todo = await Todo.findById(req.params.id);
 
         if (!todo) {
-            return res.status(404).send("Contact Not Found");
+            return res.status(404).send("Todo Not Found");
         }
         if (req.user.id !== todo.user.toString()) {
             return res.status(401).send("Unauthorized Request");
@@ -70,4 +70,27 @@ router.patch('/:id', authVerify, async (req, res) => {
     }
 });
 
+// @route   POST api/v1/todo
+// @desc    Update status of existing todo
+// @access  Private
+router.delete('/:id', authVerify, async (req, res) => {
+
+    try {
+        
+        let todo = await Todo.findById(req.params.id);
+        if (!todo) {
+            return res.status(404).send("Todo Not Found");
+        }
+        if (todo.user.toString() !== req.user.id) {
+            return res.status(401).send("Unauthorized User");
+        }
+
+        await Todo.findByIdAndDelete(req.params.id);
+        return res.json({ msg: "Todo Deleted" });
+    } catch (error) {
+        console.log(error.message);
+        return res.status(500).send("Internal Server Error");
+    }
+    
+})
 module.exports = router;
