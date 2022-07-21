@@ -70,8 +70,8 @@ router.patch('/:id', authVerify, async (req, res) => {
     }
 });
 
-// @route   POST api/v1/todo
-// @desc    Update status of existing todo
+// @route   DELETE api/v1/todo
+// @desc    Delete existing todo
 // @access  Private
 router.delete('/:id', authVerify, async (req, res) => {
 
