@@ -6,6 +6,10 @@ const config = require('config');
 const {body,validationResult} = require('express-validator');
 const User = require('../models/User');
 
+
+// @route   GET api/v1/user
+// @desc    Register a new user
+// @access  Public
 router.post('/',
     body('name', "Name is required").not().isEmpty(),
     body('email', 'Email is required').isEmail(),
@@ -13,7 +17,7 @@ router.post('/',
     , async(req, res) => {
         const errors = validationResult(req);
 
-        if (errors) {
+        if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
 
