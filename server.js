@@ -10,6 +10,6 @@ connectDB();
 
 app.use('/api/v1/user', require('./routes/user'));
 app.use('/api/v1/todo', require('./routes/todo'));
-
+app.use('/api/v1/auth', require('./routes/auth'));
 const PORT = process.env.PORT || 8080;
 app.listen(PORT,()=> `Server started on Port: ${PORT}`);
