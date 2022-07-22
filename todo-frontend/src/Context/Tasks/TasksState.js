@@ -28,6 +28,7 @@ const TasksState = ({ children }) => {
             dispatch({type:GET_TASKS,payload: res.data.slice(0,50)})
         } catch (error) {
             console.log(error);
+            console.log(error.response.data);
         }
         
     }
@@ -59,6 +60,7 @@ const TasksState = ({ children }) => {
                 
         } catch (error) {
             console.log(error);
+            console.log(error.response.data);
         }
     }
 
@@ -81,6 +83,7 @@ const TasksState = ({ children }) => {
 
         } catch (error) {
             console.log(error);
+            console.log(error.response.data);
         }
         
     }
@@ -99,6 +102,7 @@ const TasksState = ({ children }) => {
 
         } catch (error) {
             console.log(error);
+            console.log(error.response.data);
         }
     }
 

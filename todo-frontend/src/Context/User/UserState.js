@@ -34,6 +34,7 @@ const UserState = ({ children }) => {
             }
         } catch (error) {
             console.log(error);
+            console.log(error.response.data);
         }
     }
 
@@ -53,6 +54,7 @@ const UserState = ({ children }) => {
             }
         } catch (error) {
             console.log(error);
+            console.log(error.response.data);
         }
     }
 
@@ -65,6 +67,7 @@ const UserState = ({ children }) => {
             dispatch({ type: GET_USER, payload: res.data });
         } catch (error) {
             console.log(error);
+            console.log(error.response.data);
         }
     }
 
