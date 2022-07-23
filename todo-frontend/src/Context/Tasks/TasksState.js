@@ -46,7 +46,7 @@ const TasksState = ({ children }) => {
             completed:false
         }
         try {
-            const res = await axios.post("https://jsonplaceholder.typicode.com/todos", todoObj, config)
+            const res = await axios.post("/api/v1/todo", todoObj, config)
 
             // To give tasks unique id
             // While working with real database this step can be skipped
@@ -72,7 +72,7 @@ const TasksState = ({ children }) => {
             }
         }
         try {            
-            const res = await axios.patch(`https://jsonplaceholder.typicode.com/todos/${todoObj.id}`, todoObj, config);
+            const res = await axios.patch(`/api/v1/todo/${todoObj.id}`, todoObj, config);
             dispatch({ type: UPDATE_STATUS, payload: res.data });
 
             if (state.filtered !== null && state.filterType === FILTER_COMPLETED) {
@@ -91,7 +91,7 @@ const TasksState = ({ children }) => {
     const deleteTask = async(taskId) => {
         
         try {
-            await axios.delete(`https://jsonplaceholder.typicode.com/todos/${taskId}`);
+            await axios.delete(`/api/v1/todo/${taskId}`);
             dispatch({ type: DELETE_TASK, payload: taskId });
 
             if (state.filtered !== null && state.filterType === FILTER_COMPLETED) {
