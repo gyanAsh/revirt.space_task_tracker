@@ -10,6 +10,7 @@ const InputNewTask = () => {
   const onTaskSubmit = (e) => {
     e.preventDefault();
     addNewTask(task);
+    setTask('');
 }
   return (
     <div className={styles.inputTaskContainer}>

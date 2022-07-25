@@ -17,13 +17,13 @@ const DisplayTasks = () => {
         <h3>Added task to-do list</h3>
           <ol className={styles.displayList}>
         {filtered !== null ? filtered.map(task => (
-                <li key={task.id}>
+                <li key={task._id}>
                 <TodoCard
                     task={task}
                 />
                 </li>
               )) : tasks !== null && tasks.map(task => (
-                  <li key={task.id}>
+                  <li key={task._id}>
                       <TodoCard
                           task={task}
                       />

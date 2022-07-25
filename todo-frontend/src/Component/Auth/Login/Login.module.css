@@ -1,0 +1,82 @@
+.loginContainer{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap:var(--fz-md);
+
+    padding:var(--fz-space) var(--nav-height);
+
+}
+
+.loginContainer h1{
+    color:var(--pink-purple);
+}
+
+.loginContainer form{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.loginContainer form div{
+    display:flex;
+    flex-direction: column;
+}
+.loginContainer label{
+    font-size:var(--fz-lg);
+    padding-bottom: var(--fz-xxs);
+}
+
+.loginContainer input{
+    width:clamp(34vw,70vw,25rem);
+    /* height:2rem; */
+    margin-bottom: var(--fz-xxs);
+
+    height:var(--fz-space);
+
+    border:0;
+    border-radius: var(--border-radius);
+
+    background-color: var(--grey-dl);
+
+    color: var(--white);
+    padding: var(--fz-xxs);
+    font-family: var(--font-roboto);
+    font-size: var(--fz-md);
+    letter-spacing: 0.35px;
+}
+
+.loginContainer input:hover{
+    outline:1px solid var(--pink-purple);
+}
+.loginContainer input:focus{
+    outline:1px solid var(--pink-purple);
+}
+.loginContainer input::placeholder {
+    color: var(--white);
+  }
+
+.loginContainer button{
+    width:var(--button-w);
+    height:var(--button-h);
+    margin-top: 1rem;
+
+    color: var(--white);
+    font-family: var(--font-roboto);
+    font-size: var(--fz-md);
+    font-weight: 300;
+
+    background-color: var(--pink-purple);
+    border: none;
+    border-radius: var(--border-radius);
+}
+
+.loginContainer button:hover{
+    outline:1px solid var(--white);
+}
+
+
+@media only screen and (max-width: 745px) {
+    .loginContainer{
+        padding:var(--fz-space) ;
+    }
+  }

@@ -5,7 +5,7 @@ import TasksContext from '../../../Context/Tasks/TasksContext';
 
 
 const TodoCard = ({task}) => {
-    const { title, completed,id } = task;
+    const { title, completed,_id } = task;
 
     const tasksContext = useContext(TasksContext);
     const { updateTasksStatus ,deleteTask } = tasksContext;
@@ -19,7 +19,7 @@ const TodoCard = ({task}) => {
     }
 
     const deleteCurrentTask = () => {
-        deleteTask(id);
+        deleteTask(_id);
     }
 
   return (

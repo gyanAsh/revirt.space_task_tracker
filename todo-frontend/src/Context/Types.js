@@ -7,3 +7,8 @@ export const DELETE_TASK = 'DELETE_TASK';
 export const FILTER_COMPLETED = 'FILTER_COMPLETED';
 export const FILTER_INCOMPLETE = 'FILTER_INCOMPLETE';
 export const CLEAR_FILTER = 'CLEAR_FILTER';
+
+// User
+export const REGISTER_USER = 'REGISTER_USER';
+export const LOGIN_USER = 'LOGIN_USER';
+export const GET_USER = 'GET_USER';
