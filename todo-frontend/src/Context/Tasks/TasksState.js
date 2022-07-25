@@ -1,6 +1,5 @@
 import React, { useReducer } from 'react';
 import axios from 'axios';
-import {v4} from 'uuid'
 import TasksContext from './TasksContext';
 import TasksReducer from './TasksReducer';
 import {
@@ -12,6 +11,7 @@ import {
     FILTER_INCOMPLETE,
     CLEAR_FILTER
 } from '../Types';
+import setAuthToken from '../../Utils/setAuthToken';
 
 const TasksState = ({ children }) => {
     const initalState = {
@@ -24,8 +24,11 @@ const TasksState = ({ children }) => {
     // Get all ToDos
     const getTasks = async () => {
         try {
-            const res = await axios.get('/api/v1/todo');
-            dispatch({type:GET_TASKS,payload: res.data.slice(0,50)})
+            if (localStorage.token) {
+                setAuthToken(localStorage.token);
+            }
+            const res = await axios.get("api/v1/todo");
+            dispatch({type:GET_TASKS,payload: res.data})
         } catch (error) {
             console.log(error);
             console.log(error.response.data);
@@ -42,15 +45,9 @@ const TasksState = ({ children }) => {
         }
         const todoObj = {
             title: task,
-            userId: 1,
-            completed:false
         }
         try {
             const res = await axios.post("/api/v1/todo", todoObj, config)
-
-            // To give tasks unique id
-            // While working with real database this step can be skipped
-            res.data.id = v4();
 
             dispatch({ type: ADD_NEW_TASK, payload: res.data });
 
@@ -72,7 +69,7 @@ const TasksState = ({ children }) => {
             }
         }
         try {            
-            const res = await axios.patch(`/api/v1/todo/${todoObj.id}`, todoObj, config);
+            const res = await axios.patch(`/api/v1/todo/${todoObj._id}`, todoObj, config);
             dispatch({ type: UPDATE_STATUS, payload: res.data });
 
             if (state.filtered !== null && state.filterType === FILTER_COMPLETED) {
@@ -91,6 +88,9 @@ const TasksState = ({ children }) => {
     const deleteTask = async(taskId) => {
         
         try {
+            if (localStorage.token) {
+                setAuthToken(localStorage.token);
+            }
             await axios.delete(`/api/v1/todo/${taskId}`);
             dispatch({ type: DELETE_TASK, payload: taskId });
 

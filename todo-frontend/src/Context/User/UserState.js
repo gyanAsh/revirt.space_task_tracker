@@ -29,9 +29,6 @@ const UserState = ({ children }) => {
         try {
             const res = await axios.post('/api/v1/user', credentials, config);
             dispatch({ type: REGISTER_USER, payload: res.data.token });
-            if (localStorage.token) {
-                setAuthToken(localStorage.token);
-            }
         } catch (error) {
             console.log(error);
             console.log(error.response.data);
@@ -49,9 +46,6 @@ const UserState = ({ children }) => {
         try {
             const res = await axios.post('/api/v1/auth', credentials, config);
             dispatch({ type: LOGIN_USER, payload: res.data.token })
-            if (localStorage.token) {
-                setAuthToken(localStorage.token);
-            }
         } catch (error) {
             console.log(error);
             console.log(error.response.data);
