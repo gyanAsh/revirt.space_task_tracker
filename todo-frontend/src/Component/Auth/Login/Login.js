@@ -1,4 +1,5 @@
-import React,{useContext,useState} from 'react'
+import React, { useContext, useState } from 'react'
+import {Link} from 'react-router-dom'
 import styles from './Login.module.css';
 import UserContext from '../../../Context/User/UserContext';
 import AlertContext from '../../../Context/Alert/AlertContext';
@@ -46,7 +47,8 @@ const Login = () => {
                 <input type="password" name="password" id='password' value={password} onChange={onInputChange}/>
             </div>
             <button type="submit">Submit</button>
-          </form>
+      </form>
+      <Link to='/auth/register'><p className={styles.redirect}>Register new user ?</p></Link>
         </div>
   )
 }

@@ -74,6 +74,10 @@
     outline:1px solid var(--white);
 }
 
+.redirect{
+    color:var(--pink-purple);
+}
+
 
 @media only screen and (max-width: 745px) {
     .loginContainer{
