@@ -1,7 +1,8 @@
-import React, { useReducer } from 'react';
+import React, { useReducer,useContext } from 'react';
 import axios from 'axios';
 import TasksContext from './TasksContext';
 import TasksReducer from './TasksReducer';
+// import AlertContext from '../Alert/AlertContext'
 import {
     GET_TASKS,
     ADD_NEW_TASK,
@@ -14,6 +15,9 @@ import {
 import setAuthToken from '../../Utils/setAuthToken';
 
 const TasksState = ({ children }) => {
+    // const alertContext = useContext(AlertContext);
+    // const { setAlert } = alertContext;
+    
     const initalState = {
         tasks: null,
         filtered: null,
@@ -32,6 +36,7 @@ const TasksState = ({ children }) => {
         } catch (error) {
             console.log(error);
             console.log(error.response.data);
+            // setAlert(error.response.data);
         }
         
     }
@@ -58,6 +63,7 @@ const TasksState = ({ children }) => {
         } catch (error) {
             console.log(error);
             console.log(error.response.data);
+            // setAlert(error.response.data);
         }
     }
 
@@ -81,6 +87,7 @@ const TasksState = ({ children }) => {
         } catch (error) {
             console.log(error);
             console.log(error.response.data);
+            // setAlert(error.response.data);
         }
         
     }
@@ -103,6 +110,7 @@ const TasksState = ({ children }) => {
         } catch (error) {
             console.log(error);
             console.log(error.response.data);
+            // setAlert(error.response.data);
         }
     }
 

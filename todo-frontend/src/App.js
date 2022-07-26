@@ -10,24 +10,27 @@ import Header from './Component/Header/Header';
 import Todos from './Component/Todos/Todos';
 import TasksState from './Context/Tasks/TasksState';
 import UserState from './Context/User/UserState';
+import AlertState from './Context/Alert/AlertState';
 
 function App() {
   return (
     <div className="App">
       <UserState>
         <TasksState>
+          <AlertState>
 
-          <Router>
-            <Header />
+              <Router>
+                <Header />
 
-              <Routes>
-                <Route exact path='/' element={<Todos />} />
-                <Route exact path='/auth/register' element={<Register />} />
-                <Route exact path='/auth/login' element={<Login />} />
-              </Routes>
-            
-          </Router>
-          
+                <Routes>
+                  <Route exact path='/' element={<Todos />} />
+                  <Route exact path='/auth/register' element={<Register />} />
+                  <Route exact path='/auth/login' element={<Login />} />
+                </Routes>
+              
+            </Router>
+
+          </AlertState>
         </TasksState>
       </UserState>
       

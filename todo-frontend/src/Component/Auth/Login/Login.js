@@ -1,9 +1,13 @@
 import React,{useContext,useState} from 'react'
 import styles from './Login.module.css';
 import UserContext from '../../../Context/User/UserContext';
+import AlertContext from '../../../Context/Alert/AlertContext';
+
 const Login = () => {
   const userContext = useContext(UserContext);
   const { loginUser } = userContext;
+  const alertContext = useContext(AlertContext);
+  const { setAlert } = alertContext;
   
   const [credentials, setCredentials] = useState({
     email: "",
@@ -19,7 +23,7 @@ const Login = () => {
   const onFormSubmit = e => {
     e.preventDefault();
     if (email === "" || password === "") {
-      alert("Please enter required details");
+      setAlert("Please enter required details");
     } else {
       loginUser(credentials);
       setCredentials({
