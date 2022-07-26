@@ -11,6 +11,7 @@ import Todos from './Component/Todos/Todos';
 import TasksState from './Context/Tasks/TasksState';
 import UserState from './Context/User/UserState';
 import AlertState from './Context/Alert/AlertState';
+import Alert from './Component/Alert/Alert';
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
           <AlertState>
 
               <Router>
-                <Header />
+              <Header />
+              <Alert/>
 
                 <Routes>
                   <Route exact path='/' element={<Todos />} />

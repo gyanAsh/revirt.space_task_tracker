@@ -1,10 +1,12 @@
 import React,{useContext,useState} from 'react'
 import styles from './Register.module.css';
 import UserContext from '../../../Context/User/UserContext';
-
+import AlertContext from '../../../Context/Alert/AlertContext';
 const Register = () => {
     const userContext = useContext(UserContext);
     const { registerUser } = userContext;
+    const alertContext = useContext(AlertContext);
+    const { setAlert } = alertContext;
 
     const [credentials, setCredentials] = useState({
         name: '',
@@ -22,9 +24,9 @@ const Register = () => {
     const onFormSubmit = (e) => {
         e.preventDefault();
         if (name === '' || email === '' || password === '' || confirmPassword === '') {
-            alert('Please enter all required details');
+            setAlert('Please enter all required details');
         } else if( password !== confirmPassword ) {
-            alert('Password did not match');
+            setAlert('Password did not match');
         } else {
             registerUser({ name, email, password });
             setCredentials({

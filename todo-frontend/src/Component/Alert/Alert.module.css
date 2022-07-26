@@ -1,0 +1,21 @@
+.alertContainer{
+    position: absolute;
+    top:1rem;
+    right:1rem;
+
+     display:grid;
+     gap:1rem;
+}
+
+.alertContainer h1{
+    display:flex;
+    padding:1rem;
+    
+    color:white;
+    background-color:var(--pink-purple);
+
+    font-family: var(--font-sans);
+    font-size:1rem;
+
+    border-radius: var(--border-radius);
+}
