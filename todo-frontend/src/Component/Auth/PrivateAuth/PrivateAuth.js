@@ -1,8 +1,17 @@
-import React from 'react'
+import React,{useContext,useEffect} from 'react'
+import UserContext from '../../../Context/User/UserContext';
 import { Navigate } from 'react-router-dom';
 
-const PrivateAuth = ({children}) => {
-    if (localStorage.token)
+const PrivateAuth = ({ children }) => {
+    const userContext = useContext(UserContext);
+    const { isAuthenticated, loadUser } = userContext;
+
+    useEffect(() => {
+        loadUser();
+        // eslint-disable-next-line
+    }, [isAuthenticated])
+
+    if (isAuthenticated)
         return children;
     else
         return <Navigate replace to="/auth/login"/>

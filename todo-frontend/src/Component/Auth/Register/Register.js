@@ -1,13 +1,23 @@
-import React, { useContext, useState } from 'react';
-import {Link} from 'react-router-dom'
+import React, { useContext, useState,useEffect } from 'react';
+import {Link,useNavigate} from 'react-router-dom'
 import styles from './Register.module.css';
 import UserContext from '../../../Context/User/UserContext';
 import AlertContext from '../../../Context/Alert/AlertContext';
 const Register = () => {
     const userContext = useContext(UserContext);
-    const { registerUser } = userContext;
+    const { registerUser,isAuthenticated } = userContext;
     const alertContext = useContext(AlertContext);
     const { setAlert } = alertContext;
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (isAuthenticated) {
+          navigate('/');
+        }
+    
+        // eslint-disable-next-line
+      },[isAuthenticated])
 
     const [credentials, setCredentials] = useState({
         name: '',

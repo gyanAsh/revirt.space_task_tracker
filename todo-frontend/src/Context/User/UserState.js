@@ -8,11 +8,14 @@ import {
     LOGIN_USER,
     GET_USER
 } from '../Types'
+
 const UserState = ({ children }) => {
     
     const initalState = {
         user: null,
-        token:localStorage.token
+        token: localStorage.token,
+        isAuthenticated: false,
+        error:null,
     }
 
     const [state, dispatch] = useReducer(UserReducer, initalState);
@@ -70,6 +73,8 @@ const UserState = ({ children }) => {
           value={{
               user: state.user,
               token: state.token,
+              error: state.error,
+              isAuthenticated: state.isAuthenticated,
               registerUser,
               loginUser,
               loadUser

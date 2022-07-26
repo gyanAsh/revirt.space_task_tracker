@@ -1,10 +1,12 @@
 .headerContainer{
     height:var(--nav-height);
     display:flex;
-    justify-content:center;
+    justify-content:space-between;
     align-items:center;
 
     color:white;
+
+    padding: 0 2rem;
 
     font-family: var(--font-roboto);
     font-size: var(--fz-lg);

@@ -11,12 +11,14 @@ const UserReducer = (state, action) => {
             localStorage.setItem('token',action.payload)
             return {
                 ...state,
-                token:action.payload
+                token: action.payload,
+                isAuthenticated:true
             }
         case GET_USER:
             return {
                 ...state,
-                user:action.payload
+                user: action.payload,
+                isAuthenticated: true
             }
         default:
             return state;
