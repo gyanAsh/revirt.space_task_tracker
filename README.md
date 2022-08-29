@@ -1,4 +1,4 @@
-# revirt.space_assignment_frontend
+# revirt.space_task_tracker
 Note Tracker Application (https://revirt-space-todo-assignmet.netlify.app/)
 // This link in not connected to an actual database //
 
